@@ -6,7 +6,8 @@ workspace {
 
         usuario = person "Usuario"
         ss_sistemaAuditoria = softwareSystem "Sistema de Auditoría"
-        
+        ss_sistemaObservabilidad = softwareSystem "Sistema de Observabilidad"
+
         ss_mueblesSabana = softwareSystem "Sistema de Gestión Muebles La Sabana" {
             ctn_webapp = container "Frontend - Aplicacion Web" {
                 cmp_spaFramework = component "Framework SPA (React/Angular/Vue)"
@@ -91,6 +92,7 @@ workspace {
         ctn_reportes -> ctn_baseDatosTransaccional "Lee"
         
         ss_sistemaAuditoria -> ctn_baseDatosAuditoria "Registra auditorías"
+        ss_mueblesSabana -> ss_sistemaObservabilidad "Envía métricas, logs y trazas"
         ctn_api -> ctn_baseDatosAuditoria "Registra eventos de auditoría"
 
         // Relaciones para el frontend
